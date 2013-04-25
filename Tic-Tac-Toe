@@ -1,0 +1,181 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+#include <cstdio>
+#include <windows.h>
+using namespace std;
+
+
+int gra()
+{
+
+    srand(time(NULL));
+    char p[9];
+    int r=0;
+    int c;
+    int w; //wybrana
+    int wpc; // wybrana przez PC
+    bool go=false; //game over
+    bool z;
+    for(int i=0;i<=9;i++) //Czyszczenie znakow.
+    {
+        p[i]=49+i;
+    }
+    //plansza
+        system("cls");
+        cout <<"  "<<" | "<<" "<<" | "<<"  "<<endl;
+        cout <<" "<<p[6]<<" | "<<p[7]<<" | "<<p[8]<<" "<<endl;
+        cout <<"  "<<" | "<<" "<<" | "<<"  "<<endl;
+        cout <<"==========="<<endl;
+        cout <<"  "<<" | "<<" "<<" | "<<"  "<<endl;
+        cout <<" "<<p[3]<<" | "<<p[4]<<" | "<<p[5]<<" "<<endl;
+        cout <<"  "<<" | "<<" "<<" | "<<"  "<<endl;
+        cout <<"==========="<<endl;
+        cout <<"  "<<" | "<<" "<<" | "<<"  "<<endl;
+        cout <<" "<<p[0]<<" | "<<p[1]<<" | "<<p[2]<<" "<<endl;
+        cout <<"  "<<" | "<<" "<<" | "<<"  "<<endl;
+while(go!=true)
+{
+//sprawdzenie wygranej
+   if(((p[0]==p[1])&&(p[1]==p[2]))||((p[3]==p[4])&&(p[4]==p[5]))||((p[6]==p[7])&&(p[7]==p[8]))||((p[0]==p[3])&&(p[3]==p[6]))||((p[1]==p[4])&&(p[4]==p[7]))||((p[2]==p[5])&&(p[5]==p[8]))||((p[0]==p[4])&&(p[4]==p[8]))||((p[2]==p[4])&&(p[4]==p[6])))
+    {
+    go=true;
+    cout <<"Wygral Komputer :( "<< endl;
+    Sleep(1000);
+    return 0;
+    }
+    else
+    {
+        do
+        {
+            cin >> w;
+            //sprawdzenie poprawnosci ruchu
+            if((p[w-1]==88)||(p[w-1]==64))
+            {
+        system("cls");
+        cout <<"  "<<" | "<<" "<<" | "<<"  "<<endl;
+        cout <<" "<<p[6]<<" | "<<p[7]<<" | "<<p[8]<<" "<<endl;
+        cout <<"  "<<" | "<<" "<<" | "<<"  "<<endl;
+        cout <<"==========="<<endl;
+        cout <<"  "<<" | "<<" "<<" | "<<"  "<<endl;
+        cout <<" "<<p[3]<<" | "<<p[4]<<" | "<<p[5]<<" "<<endl;
+        cout <<"  "<<" | "<<" "<<" | "<<"  "<<endl;
+        cout <<"==========="<<endl;
+        cout <<"  "<<" | "<<" "<<" | "<<"  "<<endl;
+        cout <<" "<<p[0]<<" | "<<p[1]<<" | "<<p[2]<<" "<<endl;
+        cout <<"  "<<" | "<<" "<<" | "<<"  "<<endl;
+        cout << endl;
+        cout <<"Zly Ruch"<<endl;
+                z=false;
+            }
+            else
+            {
+                z=true;
+            }
+        }while(z!=true);
+        p[w-1]=88;
+        r++;
+        system("cls");
+        cout <<"  "<<" | "<<" "<<" | "<<"  "<<endl;
+        cout <<" "<<p[6]<<" | "<<p[7]<<" | "<<p[8]<<" "<<endl;
+        cout <<"  "<<" | "<<" "<<" | "<<"  "<<endl;
+        cout <<"==========="<<endl;
+        cout <<"  "<<" | "<<" "<<" | "<<"  "<<endl;
+        cout <<" "<<p[3]<<" | "<<p[4]<<" | "<<p[5]<<" "<<endl;
+        cout <<"  "<<" | "<<" "<<" | "<<"  "<<endl;
+        cout <<"==========="<<endl;
+        cout <<"  "<<" | "<<" "<<" | "<<"  "<<endl;
+        cout <<" "<<p[0]<<" | "<<p[1]<<" | "<<p[2]<<" "<<endl;
+        cout <<"  "<<" | "<<" "<<" | "<<"  "<<endl;
+        cout <<r<<endl;
+          if(r==9)
+    {
+        system("cls");
+        cout <<"Remis."<<endl;
+        Sleep(1000);
+        return 0;
+    }
+        Sleep(1000);
+    }
+    //sprawdzenie wygranej
+    if(((p[0]==p[1])&&(p[1]==p[2]))||((p[3]==p[4])&&(p[4]==p[5]))||((p[6]==p[7])&&(p[7]==p[8]))||((p[0]==p[3])&&(p[3]==p[6]))||((p[1]==p[4])&&(p[4]==p[7]))||((p[2]==p[5])&&(p[5]==p[8]))||((p[0]==p[4])&&(p[4]==p[8]))||((p[2]==p[4])&&(p[4]==p[6])))
+    {
+    go=true;
+    cout <<"Wygrales, Gratulacje :)"<< endl;
+    Sleep(1000);
+    return 1;
+    }
+    else
+    {
+
+        do
+        {
+            wpc=rand()%8;
+    //sprawdzenie poprawnosci ruchu
+            if((p[wpc]==88)||(p[wpc]==64))
+            {
+        system("cls");
+        cout <<"  "<<" | "<<" "<<" | "<<"  "<<endl;
+        cout <<" "<<p[6]<<" | "<<p[7]<<" | "<<p[8]<<" "<<endl;
+        cout <<"  "<<" | "<<" "<<" | "<<"  "<<endl;
+        cout <<"==========="<<endl;
+        cout <<"  "<<" | "<<" "<<" | "<<"  "<<endl;
+        cout <<" "<<p[3]<<" | "<<p[4]<<" | "<<p[5]<<" "<<endl;
+        cout <<"  "<<" | "<<" "<<" | "<<"  "<<endl;
+        cout <<"==========="<<endl;
+        cout <<"  "<<" | "<<" "<<" | "<<"  "<<endl;
+        cout <<" "<<p[0]<<" | "<<p[1]<<" | "<<p[2]<<" "<<endl;
+        cout <<"  "<<" | "<<" "<<" | "<<"  "<<endl;
+        cout << endl;
+        cout <<"Zly Ruch"<<endl;
+                z=false;
+            }
+            else
+            {
+                z=true;
+            }
+        }while(z!=true);
+
+
+        p[wpc]=64;
+        r++;
+        system("cls");
+        cout <<"  "<<" | "<<" "<<" | "<<"  "<<endl;
+        cout <<" "<<p[6]<<" | "<<p[7]<<" | "<<p[8]<<" "<<endl;
+        cout <<"  "<<" | "<<" "<<" | "<<"  "<<endl;
+        cout <<"==========="<<endl;
+        cout <<"  "<<" | "<<" "<<" | "<<"  "<<endl;
+        cout <<" "<<p[3]<<" | "<<p[4]<<" | "<<p[5]<<" "<<endl;
+        cout <<"  "<<" | "<<" "<<" | "<<"  "<<endl;
+        cout <<"==========="<<endl;
+        cout <<"  "<<" | "<<" "<<" | "<<"  "<<endl;
+        cout <<" "<<p[0]<<" | "<<p[1]<<" | "<<p[2]<<" "<<endl;
+        cout <<"  "<<" | "<<" "<<" | "<<"  "<<endl;
+        cout <<r<<endl;
+    }
+
+}
+}
+//menu
+int main()
+{
+    int m;
+    while(m!=2)
+    {
+    system("cls");
+    cout << "Tic Tac Toe" << endl;
+    cout << "Wybierz [1] by zagrac" <<endl;
+    cout << "Wybierz [2] by wyjsc"<< endl;
+    cin >> m;
+    switch(m)
+    {
+        case 1:
+            gra();
+        break;
+        case 2:
+            system("cls");
+            cout << "DOWIDZENIA :D"<< endl;
+        break;
+    }
+    }
+}
