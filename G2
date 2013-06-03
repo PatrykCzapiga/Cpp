@@ -1,0 +1,45 @@
+#include <iostream>
+#include <windows.h>
+#include <ctime>
+
+using namespace std;
+
+int main()
+{
+
+srand(time(NULL));
+
+int p; //Parzyste
+int temp;
+int t[20];
+
+for(int i=0;i<20;i++)
+{
+    t[i]=rand()%20-10;
+    if(t[i]%2==0)
+    p++;
+}
+cout << "tablica przed sortowaniem" << endl;
+for(int i=0;i<20;i++)
+{
+    cout << t[i] << "\t";
+
+}
+for(int i=0;i<20;i++)
+for(int j=0;j<19;j++)
+{
+    if( t[j]>t[j+1])
+       {
+        temp=t[j];
+        t[j]=t[j+1];
+        t[j+1]=temp;
+       }
+}
+cout << "tablica po sortowaniu" << endl;
+for(int i=0;i<20;i++)
+{
+    cout << t[i] << "\t";
+}
+    system("pause");
+    return 0;
+}
