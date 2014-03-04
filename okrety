@@ -5,15 +5,18 @@
 
 using namespace std;
 
-    char p1[10][10];
-    char p2[10][10];
-    int statek[10];
+    char p1[10][10]; //plansza pc
+    char p2[10][10]; //plansza gracza
+    int statek[10]={4,3,3,2,2,2,1,1,1,1};
     int x=0;
+    int x1=0;
     int y=0;
-    int k=0;
+    int y1=0;
+    int k=0; // 1 pion 0 poziom
 
 
-void wyswietlpl()
+
+void wyswietlpl(int v)
 {
     system("cls");
     cout << "  | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | " << endl;
@@ -27,50 +30,74 @@ void wyswietlpl()
     }
     cout << endl;
     }
-    cout << "x " << x << "y " << y << endl;
+    cout << "x=" << x << " y=" << y << " k=" << k << " i=" << v << endl;
 
 }
 
-void stworzstatek(int x1, int x2)
-{
-    int obiekt[1][x2];
+void stworzstatek()
+{    
+     
 }
 void graczklawisze()
 {
-        for(int i=9;i!=0;i--)
+        for(int i=0;i!=9;i++)
         {
         int ustawiono=false;
         while(ustawiono==false)
         {
-            wyswietlpl();
+            wyswietlpl(i);
             unsigned char znak = getch();
             znak = getch();
             switch( znak )
             {
             case 56: //8
             case 72: //gora
-
+            if(y>0)
+            {
+            y1=y;
+            x1=x;
+            y--;
+            stworzstatek();
+            }
                 //
 
                 break;
 
             case 50: //2
             case 80: //doł
-
+            if(k==1&&x<9-statek[i])
+            {
+            y1=y;
+            x1=x;
+            y++;
+            stworzstatek();
+            }
                 //
 
                 break;
 
             case 52: //4
             case 75: //lewo
-
+            if(x>0)
+            {
+            y1=y;
+            x1=x;
+            x--;
+            stworzstatek();
+            }
                 //
 
                 break;
 
             case 54: //6
             case 77: //prawo
-
+            if(k==0&&x<9-statek[i])
+            {
+            y1=y;
+            x1=x;
+            x++;
+            stworzstatek();
+            }
                 //
 
                 break;
@@ -79,13 +106,17 @@ void graczklawisze()
             case 51: //3
             case 55: //7
             case 57: //9
-
+            if(k==1)
+            k=0;
+            else
+            k=1;
+            stworzstatek();
                 //
 
                 break;
 
             case 53: //5
-
+            ustawiono=true;
                 //
 
                 break;
@@ -99,7 +130,6 @@ void graczstawia()
 {
     y=5;
     x=5;
-    wyswietlpl();
     graczklawisze();
 }
 void wyswietlpc()
@@ -205,16 +235,7 @@ int main()
 {
 
     srand(time(NULL));
-    statek[0]=4;
-    statek[1]=3;
-    statek[2]=3;
-    statek[3]=2;
-    statek[4]=2;
-    statek[5]=2;
-    statek[6]=1;
-    statek[7]=1;
-    statek[8]=1;
-    statek[9]=1;
+
 
     //czyszczenie planszy
     czyszczenie_planszy();
