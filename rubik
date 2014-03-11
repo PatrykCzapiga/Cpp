@@ -1,0 +1,100 @@
+#include <iostream>
+#include <fstream>
+#include <string.h>
+using namespace std;
+
+//     tabu
+//tabl tabf tabr
+//     tabd
+//     tabb
+
+ char tabu[3][3], tabf[3][3], tabd[3][3], tabb[3][3], tabl[3][3], tabr[3][3];
+ char temp;
+ 
+void ruchu()
+{
+    for(int y=0; y<3; y++)
+    {
+    temp=tabl[0][y];
+    tabl[0][y]=tabf[0][y];
+    tabf[0][y]=tabr[0][y];
+    tabr[0][y]=tabb[0][y];
+    tabb[0][y]=temp;
+    
+                    
+    }
+    temp=tabu[0][0];
+    tabu[0][0]=tabu[2][0];
+    tabu[2][0]=tabu[2][2];
+    tabu[2][2]=tabu[0][2];
+    tabu[0][2]=temp;
+        
+    temp=tabu[1][0];
+    tabu[1][0]=tabu[2][1];
+    tabu[2][1]=tabu[1][1];
+    tabu[1][1]=tabu[1][0];
+    tabu[1][0]=temp;                
+}
+
+void resetkostka()
+{
+     for(int x=0; x<3; x++)
+     for(int y=0; y<3; y++)
+     tabu[x][y]= (char)'b';
+     for(int x=0; x<3; x++)
+     for(int y=0; y<3; y++)
+     tabf[x][y]= (char)'w';
+     for(int x=0; x<3; x++)
+     for(int y=0; y<3; y++)
+     tabd[x][y]= (char)'g';
+     for(int x=0; x<3; x++)
+     for(int y=0; y<3; y++)
+     tabb[x][y]= (char)'y';
+     for(int x=0; x<3; x++)
+     for(int y=0; y<3; y++)
+     tabl[x][y]= (char)'o';
+     for(int x=0; x<3; x++)
+     for(int y=0; y<3; y++)
+     tabr[x][y]= (char)'r';
+}
+
+
+void rysuj()
+{
+     
+     cout << endl;
+     for(int x=0; x<3; x++)
+     {
+     cout << "               " << " | " << tabu[x][0] << " | " << tabu[x][1] << " | " << tabu[x][2] << " | " << "               " << endl;
+     cout << endl << endl;
+     }
+     cout << endl;
+     for(int x=0; x<3; x++)
+     {
+     cout << " | " << tabl[x][0] << " | " << tabl[x][1] << " | " << tabl[x][2] << " | " << " | " << tabf[x][0] << " | " << tabf[x][1] << " | " << tabf[x][2] << " | " << " | " << tabr[x][0] << " | " << tabr[x][1] << " | " << tabr[x][2] << " | " << endl;
+     cout << endl << endl;
+     }
+     cout << endl;
+     for(int x=0; x<3; x++)
+     {
+     cout << "               " << " | " << tabd[x][0] << " | " << tabd[x][1] << " | " << tabd[x][2] << " | " << "               " << endl;
+     cout << endl << endl;
+     }
+     cout << endl;
+          for(int x=0; x<3; x++)
+     {
+     cout << "               " << " | " << tabb[x][0] << " | " << tabb[x][1] << " | " << tabb[x][2] << " | " << "               " << endl;
+     cout << endl << endl;
+     }
+     cout << endl;
+}
+
+main()
+{
+      resetkostka();
+      rysuj();
+      system("pause");
+      ruchu();
+      rysuj();
+      system("pause");
+}
