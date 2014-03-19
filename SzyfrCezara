@@ -1,0 +1,36 @@
+#include <iostream>
+#include <string>
+#include <windows.h>
+
+using namespace std;
+
+main ()
+{
+  string szyfr;
+  cout << "wpisz zaszyfrowane zdanie zastepujac spacje przecinkiem a nastepnie wcisnij enter" << endl;
+  getline(cin, szyfr);
+  string szyfr2=szyfr;
+  cout << endl;
+for(int l=0; l<26; l++)
+    {
+  for (unsigned i=0; i<szyfr.length(); i++)
+  {
+        if(szyfr.at(i)!=32)
+        {
+        if(szyfr.at(i)+l>122)
+        {
+            szyfr2.at(i)=97+szyfr.at(i)+l-123;
+            cout << szyfr2.at(i);
+        }
+        else
+        {
+            szyfr2.at(i)=szyfr.at(i)+l;
+            cout << szyfr2.at(i);
+        }
+        }
+    }
+    cout << endl;
+  }
+
+  system("pause");
+}
